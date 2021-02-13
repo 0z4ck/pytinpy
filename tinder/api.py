@@ -18,13 +18,6 @@ class TinderClient:
         self.host = host
 
 
-    def authverif(self):
-        res = get_auth_token(self.fb_access_token, config.fb_user_id)
-        if "error" in res:
-            return False
-        return True
-    
-    
     def get_recommendations(self):
         '''
         Returns a list of users that you can swipe on
