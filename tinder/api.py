@@ -201,7 +201,7 @@ class TinderClient:
     def like(self, person_id):
         try:
             url = self.host + '/like/%s' % person_id
-            r = requests.get(url, headers=get_headers)
+            r = requests.get(url, headers=self.headers)
             return r.json()
         except requests.exceptions.RequestException as e:
             print("Something went wrong. Could not like:", e)
@@ -210,7 +210,7 @@ class TinderClient:
     def dislike(self, person_id):
         try:
             url = self.host + '/pass/%s' % person_id
-            r = requests.get(url, headers=get_headers)
+            r = requests.get(url, headers=self.headers)
             return r.json()
         except requests.exceptions.RequestException as e:
             print("Something went wrong. Could not dislike:", e)
