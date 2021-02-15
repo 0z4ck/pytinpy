@@ -105,6 +105,20 @@ class TinderClient:
         except requests.exceptions.RequestException as e:
             print("Something went wrong. Could not get your metadata:", e)
     
+    def post_meta_v2(self,data):
+        '''
+        Returns meta data on yourself from V2 API. Including the following keys:
+        ['account', 'client_resources', 'plus_screen', 'boost',
+        'fast_match', 'top_picks', 'paywall', 'merchandising', 'places',
+        'typing_indicator', 'profile', 'recs']
+        '''
+        try:
+            url = self.host + '/v2/meta'
+            r = requests.post(url, data=data, headers=self.headers)
+            return r.json()
+        except requests.exceptions.RequestException as e:
+            print("Something went wrong. Could not get your metadata:", e)
+
     def update_location(self, lat, lon):
         '''
         Updates your location to the given float inputs
